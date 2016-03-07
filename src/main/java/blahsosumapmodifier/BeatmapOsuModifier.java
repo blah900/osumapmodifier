@@ -27,8 +27,8 @@ public class BeatmapOsuModifier {
         .build();
     MutateValidator validator = new MutateValidator(0, 512, 0, 384);
     MutateValidator nonValidator = new MutateValidator(-1000, 1000, -500, 500);
-    info.getDifficulty().set(BeatmapInfoDifficulty.Setting.CircleSize, "7");
-    info.getDifficulty().set(BeatmapInfoDifficulty.Setting.ApproachRate, "9");
+    info.getDifficulty().set(BeatmapInfoDifficulty.Setting.CircleSize, 7);
+    info.getDifficulty().set(BeatmapInfoDifficulty.Setting.ApproachRate, 9);
     info.getHitObjects().applyMutators(new MutateScale(0.67, 1), mutateInfo, nonValidator);
     info.getHitObjects().applyMutators(new MutateRotate(Math.PI / 4.0), mutateInfo, nonValidator);
     info.getHitObjects().applyMutators(new MutateConstrain(0, 512, 0, 384), mutateInfo, validator);

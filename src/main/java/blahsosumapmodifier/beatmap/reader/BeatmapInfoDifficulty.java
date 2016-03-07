@@ -2,9 +2,11 @@ package blahsosumapmodifier.beatmap.reader;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class BeatmapInfoDifficulty extends BeatmapInfoFragment{
+  private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat(".#");
   public static enum Setting {
     HPDrainRate, CircleSize, OverallDifficulty, ApproachRate, SliderMultiplier, SliderTickRate;
   }
@@ -13,12 +15,12 @@ public class BeatmapInfoDifficulty extends BeatmapInfoFragment{
     super(lines, false);
   }
 
-  public String get(Setting setting) {
-    return lines.get(setting.ordinal());
+  public double get(Setting setting) {
+    return Double.valueOf(lines.get(setting.ordinal()));
   }
 
-  public void set(Setting setting, String value) {
-    lines.set(setting.ordinal(), setting.name() + ":" + value);
+  public void set(Setting setting, double value) {
+    lines.set(setting.ordinal(), setting.name() + ":" + DECIMAL_FORMAT.format(value));
   }
 
   @Override
